@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Slider from "../../components/ui/Slider";
 
 type typeProps = {
    name?: String
@@ -19,21 +20,23 @@ const Homepage = ({name}: typeProps) => {
          <div className="mx-8">
             <div className="flex justify-between">
                <span className="font-bold text-xl">Categories</span>
-               <div className="space-x-2">
+               {/* <div className="space-x-2">
                   <button className="bg-green-300 rounded-full w-6 text-white font-bold align-middle">{`<`}</button>
                   <button className="bg-green-300 rounded-full w-6 text-white font-bold align-middle">{`>`}</button>
-               </div>
+               </div> */}
             </div>
-            <div className="m-5 flex justify-between space-x-8 text-center">
+            <Slider perView={5} spacing={20} arrow={true} dots={true} loop={true}>
             {
-               [1,2,3,4,5,6].map((data, index) => (
-                  <div>
-                     <div className="h-20 w-20 bg-green-300 rounded-full"></div>
+               [1,2,3,4,5,6,7,8].map((data, index) => (
+                  <div className={`keen-slider__slide number-slide${index} text-center`}>
+                     <div className="flex justify-center">
+                        <div className="h-20 w-20 bg-green-300 rounded-full"></div>
+                     </div>
                      <span>Product {index}</span>
                   </div>
                ))
             }
-            </div>
+            </Slider>
          </div>
 
          {/* populer product */}
@@ -41,10 +44,10 @@ const Homepage = ({name}: typeProps) => {
             <div className="font-bold text-xl pt-5 mx-8">
                <span>Populer Product</span>
             </div>
-            <div className="grid grid-cols-3">
+            <Slider perView={3} spacing={30}>
             {
                [1,2, 3, 4, 5].map((data, index) => (
-                  <div className="flex flex-col p-4 m-5 rounded-xl bg-green-100 break-words">
+                  <div className={`keen-slider__slide number-slide${index+1} flex flex-col p-4 rounded-xl bg-green-100 break-words`}>
                      <div className="h-20 w-20 bg-green-300 rounded-full content-center self-center mb-4"></div>
                      <span className="font-bold text-lg">Product {data}</span>
                      <span className="text-sm">Detail Product {data}</span>
@@ -60,7 +63,7 @@ const Homepage = ({name}: typeProps) => {
                   </div>
                ))
             }
-            </div>
+            </Slider>
          </div>
 
          {/* bundle packages */}
@@ -95,10 +98,10 @@ const Homepage = ({name}: typeProps) => {
             <div className="text-center p-3 m-5 font-bold text-xl">
                <span>What Out Client Say</span>
             </div>
-            <div className="grid grid-cols-3">
+            <Slider perView={3} spacing={30} >
             {
-               userReview.map(data => (
-                  <div className="my-4 p-3">
+               userReview.map((data, index) => (
+                  <div className={`keen-slider__slide number-slide${index+1} my-4 p-3`}>
                      <div className="flex items-center ">
                         <div className="h-16 w-16 bg-green-300 rounded-full content-center self-center"></div>
                         <div className="flex flex-col px-4">
@@ -114,7 +117,7 @@ const Homepage = ({name}: typeProps) => {
                   </div>
                ))
             }
-            </div>
+            </Slider>
             <div className="flex space-x-2 my-3 justify-center">
             {
                userReview.length > 3 &&
@@ -125,19 +128,23 @@ const Homepage = ({name}: typeProps) => {
             </div>
          </div>
 
-         <div className="my-20">
+         <div className="my-16 mx-8">
             <div className="flex justify-between">
                <span className="font-bold text-xl">Our Partner</span>
             </div>
-            <div className="m-5 px-10 flex justify-between space-x-8 text-center">
+            <Slider classNameWrap="px-10" perView={4} spacing={30}>
             {
                ourPartner.map((data, index) => (
-                  <div>
-                     <div className="h-20 w-20 bg-green-300 rounded-full"></div>
+                  <div className={`keen-slider__slide number-slide${index+1} text-center`}>
+                     <div className="flex justify-center">
+                        <div className="h-20 w-20 bg-green-300 rounded-full"></div>
+                     </div>
                      <span>Partner {index}</span>
                   </div>
                ))
             }
+            </Slider>
+            <div className="m-5 px-10 flex justify-between space-x-8 text-center">
             </div>
          </div>
       </div>
